@@ -68,13 +68,13 @@ then
   cp $HOME/.bashrc $HOME/.bashrc_bak
 fi
 
-chmod +x .goormide/service.sh
-
 #copy .goormide to $HOME
 cp -r goorm-auto-bak/.goormide $HOME
 
 #配置自动运行
 cat goorm-auto-bak/profile >> .bashrc
+
+chmod +x .goormide/service.sh
 
 .goormide/service.sh
 
