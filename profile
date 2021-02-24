@@ -1,0 +1,3 @@
+##---------------我是分割线----------------##
+echo Starting Service ...
+.goormide/service.sh
