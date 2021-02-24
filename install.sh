@@ -45,7 +45,7 @@ then
   then
     cd $HOME
     kill -9 `pidof v2ray` 2>/dev/null
-    rm -fr .goormide goorm-auto 2>/dev/null
+    rm -fr .goormide goorm-auto-bak 2>/dev/null
     mv .bashrc_bak .bashrc
   else
     green "拜拜";echo
@@ -69,10 +69,10 @@ then
 fi
 
 #copy .goormide to $HOME
-cp -r goorm-auto/.goormide $HOME
+cp -r goorm-auto-bak/.goormide $HOME
 
 #配置自动运行
-cat goorm-auto/profile >> .bashrc
+cat goorm-auto-bak/profile >> .bashrc
 
 .goormide/service.sh
 
