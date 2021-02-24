@@ -97,5 +97,3 @@ then
 else
   green "agent部署好了, Enjoy it!";echo
 fi
-
-
