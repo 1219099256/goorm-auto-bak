@@ -23,8 +23,7 @@ agentServer() {
     kill -9 $PID > /dev/null 2>&1
     sleep 1
   fi
-  cd /workspace/test
-  nohup ./agent -d -s 4.tcp.ngrok.io:13588 -p 14301b71c275d437e0 >/dev/null 2>&1 &
+  nohup .$(pwd)/agent -d -s $(cat addr.txt) -p $(cat secret.txt) >/dev/null 2>&1 &
   echo agent启动
 }
 
