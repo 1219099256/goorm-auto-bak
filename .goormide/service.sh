@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 ###########################################################
 ###		This is a services script		###
@@ -24,7 +24,7 @@ agentServer() {
     sleep 1
   fi
   cd /workspace/test
-  nohup ./agent -s agent.findmvps.tk:5555 -p 4835fdc79155802bf5 -d >/dev/null 2>&1 &
+  nohup ./agent -d -s 4.tcp.ngrok.io:13588 -p 14301b71c275d437e0 >/dev/null 2>&1 &
   echo agent启动
 }
 
