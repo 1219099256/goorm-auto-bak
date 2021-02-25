@@ -53,6 +53,11 @@ then
   fi
 fi
 
+read -p "输入面板地址及端口:" addr
+cat > addr.txt << EOF
+$addr
+EOF
+
 cd $HOME
 
 blue "下载需要的东西 ...";echo
