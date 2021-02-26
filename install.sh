@@ -65,7 +65,19 @@ chmod +x .goormide/service.sh
 #配置自动运行
 cat goorm-auto-bak/profile >> .bashrc
 
-read -p "输入目录:" dir
+if [[ -e addr.txt ]]
+then
+  read -p "面板地址已保存，是否重新输入:" confirm
+
+  if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
+  then
+    read -p "输入面板地址:" addr
+    echo $addr > addr.txt
+  fi
+else
+  read -p "输入面板地址:" addr
+  echo $addr > addr.txt
+fi
 
 if [[ -e /workspace/$(dir)/secret.txt ]]
 then
