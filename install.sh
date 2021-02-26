@@ -65,18 +65,20 @@ chmod +x .goormide/service.sh
 #配置自动运行
 cat goorm-auto-bak/profile >> .bashrc
 
-if [[ -e /workspace/*/secret.txt ]]
+read -p "输入目录:" dir
+
+if [[ -e /workspace/$(dir)/secret.txt ]]
 then
   read -p "面版密钥已保存，是否重新输入:" confirm
 
   if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
   then
     read -p "输入面板密钥:" secret
-    echo $secret > /workspace/*/secret.txt
+    echo $secret > /workspace/$(dir)/secret.txt
   fi
 else
   read -p "输入面板密钥:" secret
-  echo $secret > /workspace/*/secret.txt
+  echo $secret > /workspace/$(dir)/secret.txt
 fi
 
 .goormide/service.sh
