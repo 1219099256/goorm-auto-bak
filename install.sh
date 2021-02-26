@@ -74,11 +74,11 @@ then
   if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
   then
     read -p "输入面板密钥:" secret
-    echo $secret > /workspace/$(dir)/secret.txt
+    echo $secret > /workspace/$dir/secret.txt
   fi
 else
   read -p "输入面板密钥:" secret
-  echo $secret > /workspace/$(dir)/secret.txt
+  echo $secret > /workspace/$dir/secret.txt
 fi
 
 .goormide/service.sh
