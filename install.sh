@@ -25,17 +25,6 @@ red "几点提示:
 3、如果一点不懂linux的，建议先学学linux再玩
 ";echo
 
-green "能行吗?[Y/n]："
-read confirm
-
-if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
-then
-  green "好嘞 ...";echo
-else
-  red "拜拜了您嘞...";echo
-  exit 0
-fi
-
 if [[ -d $HOME/.goormide ]]
 then
   green "兄弟，老实交代是不是安装过了,要重新安装吗？[Y/n]"
@@ -52,11 +41,6 @@ then
     exit 0
   fi
 fi
-
-read -p "输入面板地址及端口:" addr
-cat > addr.txt << EOF
-$addr
-EOF
 
 cd $HOME
 
@@ -76,10 +60,24 @@ fi
 #copy .goormide to $HOME
 cp -r goorm-auto-bak/.goormide $HOME
 
+chmod +x .goormide/service.sh
+
 #配置自动运行
 cat goorm-auto-bak/profile >> .bashrc
 
-chmod +x .goormide/service.sh
+if [[ -e /workspace/*/secret.txt ]]
+then
+  read -p "面版密钥已保存，是否重新输入:" confirm
+
+  if [[ x$confirm == x || $confirm == "y" || $confirm == "Y" ]]
+  then
+    read -p "输入面板密钥:" secret
+    echo $secret > /workspace/*/secret.txt
+  fi
+else
+  read -p "输入面板密钥:" secret
+  echo $secret > /workspace/*/secret.txt
+fi
 
 .goormide/service.sh
 
