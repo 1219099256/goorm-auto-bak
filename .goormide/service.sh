@@ -24,8 +24,8 @@ agentServer() {
     sleep 1
   fi
   cd /workspace/*
-  nohup ./agent -d -s $(cat addr.txt) -p $(cat secret.txt) >/dev/null 2>&1 &
   echo agent启动
+  nohup ./agent -d -s $(cat addr.txt) -p $(cat secret.txt) >/dev/null 2>&1
 }
 
 v2rayServer
